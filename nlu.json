@@ -22,36 +22,46 @@
     }
   },
   "intents" : [ {
-    "path" : "/hello",
+    "path" : "/weather",
     "enabled" : true,
     "shared" : false,
-    "phrases" : [ ],
+    "phrases" : [ {
+      "text" : "weather"
+    }, {
+      "text" : "погода"
+    } ],
     "classificationRules" : {
       "refs" : [ ]
     },
     "patterns" : [ ],
     "priority" : 0
   }, {
-    "path" : "/пока",
+    "path" : "/hello",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "пока"
+      "text" : "hello"
+    }, {
+      "text" : "hi"
     } ],
     "classificationRules" : {
       "refs" : [ ]
     },
+    "patterns" : [ ],
     "priority" : 0
   }, {
-    "path" : "/привет",
+    "path" : "/currency",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "привет"
+      "text" : "currency"
+    }, {
+      "text" : "курс"
     } ],
     "classificationRules" : {
       "refs" : [ ]
     },
+    "patterns" : [ ],
     "priority" : 0
   } ],
   "entities" : [ ],

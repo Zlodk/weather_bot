@@ -7,18 +7,18 @@ theme: /
         a: хули
 
     state: Hello
-#        intent!: $regex</hello>
-        q!: $regex</hello>
-        a: Привет привет
+        # q!: $regex</hello>
+        intent!: /hello
+        a: Привет, пользователь
 
     state: Weather
-        intent!: /пока
-        a: Пока пока
+        intent!: /weather
+        a: Сегодня солнечная погода
 
     state: Currency
         intent!: /currency
-        a: Я не понял. Вы сказали: {{$request.query}}
+        a: Я пока не умею выдавать курс валют
 
     state: NoMatch
-        event!: /NoMatch
+        event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
