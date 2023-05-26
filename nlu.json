@@ -26,14 +26,20 @@
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "weather"
+      "text" : "Москва"
     }, {
-      "text" : "погода"
+      "text" : "Санкт-Петербург"
     } ],
     "classificationRules" : {
       "refs" : [ ]
     },
     "patterns" : [ ],
+    "slots" : [ {
+      "name" : "city",
+      "entity" : "mystem.geo",
+      "required" : true,
+      "prompts" : [ "Введите город" ]
+    } ],
     "priority" : 0
   }, {
     "path" : "/hello",
@@ -65,11 +71,11 @@
     "priority" : 0
   } ],
   "entities" : [ ],
-  "enabledSystemEntities" : [ "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
+  "enabledSystemEntities" : [ "mystem.geo", "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
   "spellerDictionary" : [ ],
   "systemEntities" : [ {
     "name" : "mystem.geo",
-    "enabled" : false
+    "enabled" : true
   }, {
     "name" : "mystem.persn",
     "enabled" : false

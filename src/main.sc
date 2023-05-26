@@ -1,39 +1,44 @@
-
+require: slotfilling/slotFilling.sc
+  module = sys.zb-common
 theme: /
 
     state: Start
         q!: $regex</start>
         a: Начнём.
-        a: хули
 
-    state: Hello
-        # q!: $regex</hello>
-        intent!: /hello
-        a: Привет, пользователь
+    #state: Hello
+    #    intent!: /привет
+    #    a: Привет привет
+    
+    state: Bye
+        intent!: /пока
+        a: Пока пока
 
-    state: Weather
-        intent!: /weather
-        script:
-            var city = $caila.inflect($parseTree._geo, ["nomn"]);
-            openWeatherMapCurrent("metric", "ru", city).then(function (res) {
-                if (res && res.weather) {
-                    $reactions.answer("Сегодня в городе " + capitalize(city) + " " + res.weather[0].description + ", " + Math.round(res.main.temp) + "°C" );
-                    if(res.weather[0].main == 'Rain' || res.weather[0].main == 'Drizzle') {
-                        $reactions.answer("Советую захватить с собой зонтик!")
-                    } else if (Math.round(res.main.temp) < 0) {
-                        $reactions.answer("Бррррр ну и мороз")
-                    }
-                } else {
-                    $reactions.answer("Что-то сервер барахлит. Не могу узнать погоду.");
-                }
-            }).catch(function (err) {
-                $reactions.answer("Что-то сервер барахлит. Не могу узнать погоду.");
-            });
-
-    state: Currency
-        intent!: /currency
-        a: Я пока не умею выдавать курс валют
+    state: /hello
+        q!: * (привет/здравствуй*/добрый (~утро/~вечер/~день/~ночь)) *
+        random:
+            a: Добрый день!
+            a: Здравствуйте!
+            a: Првиетствую.
+            
+    state: /weather
+        q!: * погод* *
+        random:
+            a: Солнечно
+            a: Пасмурно
+            a: Дождливо
+            
+    state: /currency
+        q!: * *курс* *
+        random:
+            a: 100
+            a: 1
+            a: 33
 
     state: NoMatch
         event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
+
+    # state: Match
+    #     event!: match
+    #   a: {{$context.intent.answer}}
